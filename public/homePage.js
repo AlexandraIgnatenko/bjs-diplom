@@ -36,7 +36,7 @@ const moneyManager = new MoneyManager();
 moneyManager.addMoneyCallback = (data) => {
     const addMoneyCallback = (response)=> {
         if(response.success === true) {
-            ProfileWidget.showProfile(response.data);
+            ProfileWidget.showProfile(response.data, "Баланс пополнен");
         } else {
             moneyManager.setMessage(response.error, "Недостаточно средств");
         }
@@ -47,7 +47,7 @@ moneyManager.addMoneyCallback = (data) => {
 moneyManager.conversionMoneyCallback = (data) => {
     const conversionMoneyCallback = (response) => {
         if(response.success === true) {
-            ProfileWidget.showProfile(response.data);
+            ProfileWidget.showProfile(response.data, "Конвертация средств выполнена");
         } else {
             moneyManager.setMessage(response.error, "Недостаточно средств");
         }
@@ -58,7 +58,7 @@ moneyManager.conversionMoneyCallback = (data) => {
 moneyManager.sendMoneyCallback = (data) => {
     const sendMoneyCallback = (response) => {
         if(response.success === true) {
-            ProfileWidget.showProfile(response.data);
+            ProfileWidget.showProfile(response.data, "Перевод доставлен");
         } else {
             moneyManager.setMessage(response.error, "Недостаточно средств");
         }
@@ -85,9 +85,10 @@ favoritesVigets.addUserCallback = (data) => {
         if (response.success === true) {
             favoritesVigets.clearTable();
             favoritesVigets.fillTable(response.data);
+            favoritesVigets.setMessage(response.data, "Пользователь добавлен");
             moneyManager.updateUsersList(response.data);
         } else {
-            favoritesVigets.setMessage(response.error, "Не удалось удалить пользователя")
+            favoritesVigets.setMessage(response.error, "Не удалось добавить пользователя");
         }
     }
 
@@ -99,6 +100,7 @@ favoritesVigets.removeUserCallback = (data) => {
         if (response.success === true) {
             favoritesVigets.clearTable();
             favoritesVigets.fillTable(response.data);
+            favoritesVigets.setMessage(response.data, "Пользователь удален");
             moneyManager.updateUsersList(response.data);
         } else {
             favoritesVigets.setMessage(response.error, "Не удалось удалить пользователя")
