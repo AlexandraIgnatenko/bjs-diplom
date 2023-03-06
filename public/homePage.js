@@ -39,7 +39,7 @@ moneyManager.addMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Баланс пополнен");
         } else {
-            moneyManager.setMessage(response.error, "Недостаточно средств");
+            moneyManager.setMessage(response.success);
         }
     }
     ApiConnector.addMoney(data, addMoneyCallback);
@@ -51,7 +51,7 @@ moneyManager.conversionMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Конвертация средств выполнена");
         } else {
-            moneyManager.setMessage(response.error, "Недостаточно средств");
+            moneyManager.setMessage(response.success);
         }
     }
     ApiConnector.convertMoney(data, conversionMoneyCallback);
@@ -63,7 +63,7 @@ moneyManager.sendMoneyCallback = (data) => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Перевод доставлен");
         } else {
-            moneyManager.setMessage(response.error, "Недостаточно средств");
+            moneyManager.setMessage(response.success);
         }
     }
     ApiConnector.transferMoney(data, sendMoneyCallback);
@@ -91,7 +91,7 @@ favoritesVigets.addUserCallback = (data) => {
             favoritesVigets.setMessage(response.success, "Пользователь добавлен");
             moneyManager.updateUsersList(response.data);
         } else {
-            favoritesVigets.setMessage(response.error, "Не удалось добавить пользователя");
+            favoritesVigets.setMessage(response.success);
         }
     }
 
@@ -106,7 +106,7 @@ favoritesVigets.removeUserCallback = (data) => {
             favoritesVigets.setMessage(response.success, "Пользователь удален");
             moneyManager.updateUsersList(response.data);
         } else {
-            favoritesVigets.setMessage(response.error, "Не удалось удалить пользователя")
+            favoritesVigets.setMessage(response.success)
         }
     }
 
